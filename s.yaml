@@ -27,6 +27,12 @@ services:
         memorySize: 1024
         timeout: 30
         instanceConcurrency: 100
+        # java17目前只能通过官方层自己添加
+        environmentVariables:
+          JAVA_HOME: /opt/java17
+          PATH: /opt/java17/bin::/usr/local/bin/apache-maven/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/ruby/bin:/opt/bin:/code:/code/bin
+        layers:
+          - acs:fc:cn-hangzhou:official:layers/Java17/versions/2
         customRuntimeConfig:
           command:
             - ./bootstrap
